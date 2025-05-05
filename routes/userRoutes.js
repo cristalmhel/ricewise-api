@@ -44,6 +44,7 @@ router.get('/users/email/:email', userController.getUserByEmail);
 router.put('/users/password', userController.changePassword);
 router.get('/users/getAllUsers', userController.getAllUSers);
 router.post('/users/reset-password', userController.resetPassword);
+router.post('/users/forgot-password', userController.forgotPassword);
 router.put('/users/update-user', userController.updateUserByEmail);
 router.post('/users/deactivate-user', userController.deactivateUser);
 

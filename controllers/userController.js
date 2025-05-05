@@ -115,6 +115,24 @@ exports.getAllUSers = async (req, res) => {
     }
 };
 
+exports.forgotPassword = async (req, res) => {
+    try {
+        const { email } = req.body;
+
+        if (!email) {
+            return res.status(400).json({ message: 'Email is required' });
+        }
+
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        res.status(200).json({ message: 'Email verified. Proceed to change password.', redirect: true });
+    } catch (err) {
+        res.status(500).json({ message: 'Error verifying email: ' + err.message });
+    }
+};
+
 exports.resetPassword = async (req, res) => {
     try {
         const { email, newPassword } = req.body;
